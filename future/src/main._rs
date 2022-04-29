@@ -1,0 +1,23 @@
+use futures::executor;
+
+struct User{
+
+}
+
+struct UserId(u32);
+
+struct Db{}
+
+impl Db{
+    async fn find_user_by_id(&self, user_id : UserId) -> Option<User>{
+        // DBに接続するなどの実装が追加される想定。
+    }
+}
+
+async fn find_user_by_id(db: Db, user_id : UserId) -> Option<User>{
+    db.find_user_by_id(user_id).await
+}
+fn main(){
+    //find_user_by_id関数を実行する
+    executor::block_on(find_user_by_id(Db {}, UserId(1)));
+}
