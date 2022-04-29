@@ -3,6 +3,7 @@ use anyhow::{bail,ensure,Context,Result};
 use clap::Parser;
 use std::fs::File;
 use std::io::{stdin,BufReader,BufRead};
+use std::path::PathBuf;
 
 #[derive(Parser,Debug)]
 #[clap(
@@ -16,7 +17,7 @@ struct Opts{
     verbose : bool,
 
     #[clap(name= "FILE")]
-    formula_file: Option<String>,
+    formula_file: Option<PathBuf>,
 }
 
 struct RpnCalculator(bool);
